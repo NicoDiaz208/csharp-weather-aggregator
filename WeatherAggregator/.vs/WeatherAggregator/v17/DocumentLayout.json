@@ -1,12 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\simon\\OneDrive\\Dokumente\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\simon\\Dokumente\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|c:\\users\\simon\\dokumente\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.library\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|solutionrelative:weatheraggregator.library\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80FA9B51-EAA2-4BFD-9D63-166C60CF1764}|WeatherAggregator.Console\\WeatherAggregator.Console.csproj|c:\\users\\simon\\dokumente\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80FA9B51-EAA2-4BFD-9D63-166C60CF1764}|WeatherAggregator.Console\\WeatherAggregator.Console.csproj|solutionrelative:weatheraggregator.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\simon\\Dokumente\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Class1.cs",
+              "RelativeDocumentMoniker": "WeatherAggregator.Library\\Class1.cs",
+              "ToolTip": "C:\\Users\\simon\\Dokumente\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Class1.cs",
+              "RelativeToolTip": "WeatherAggregator.Library\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T13:28:21.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\simon\\Dokumente\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Console\\Program.cs",
+              "RelativeDocumentMoniker": "WeatherAggregator.Console\\Program.cs",
+              "ToolTip": "C:\\Users\\simon\\Dokumente\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Console\\Program.cs",
+              "RelativeToolTip": "WeatherAggregator.Console\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T13:27:04.349Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
