@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using WeatherAggregator.ASPNet.Models;
 using WeatherAggregator.Library.Interfaces;
+using WeatherAggregator.Library.Interfaces.Entities;
 
 namespace WeatherAggregator.ASPNet.Controllers
 {
@@ -14,6 +15,11 @@ namespace WeatherAggregator.ASPNet.Controllers
         {
             _logger = logger;
             _weatherService = weatherService;
+        }
+
+        public async Task<IActionResult> getWeatherInfo(ILocation location)
+        {
+            return View(await _weatherService.GetWeatherAsync(location));
         }
 
         public IActionResult Index()

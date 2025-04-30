@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherAggregator.Library.Entities;
+using WeatherAggregator.Library.Interfaces.Entities;
 
 namespace WeatherAggregator.Library.Interfaces
 {
     public interface IWeatherService
     {
-        Task<WeatherInfo> GetWeatherAsync(double latitude, double longitude);
+        Task<WeatherInfo> GetWeatherAsync(ILocation location);
     }
 }

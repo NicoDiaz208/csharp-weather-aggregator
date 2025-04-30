@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using WeatherAggregator.Library.Entities;
 using WeatherAggregator.Library.Interfaces;
+using WeatherAggregator.Library.Interfaces.Entities;
 
 namespace WeatherAggregator.Library.Service
 {
@@ -18,9 +19,9 @@ namespace WeatherAggregator.Library.Service
             _httpClient = httpClient;
         }
 
-        public async Task<WeatherInfo?> GetWeatherAsync(double latitude, double longitude)
+        public async Task<WeatherInfo?> GetWeatherAsync(ILocation location)
         {
-            string url = $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true";
+            string url = $"https://api.open-meteo.com/v1/forecast?latitude={location.Latitude}&longitude={location.Longitude}&current_weather=true";
 
             try
             {

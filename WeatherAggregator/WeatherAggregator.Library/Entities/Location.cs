@@ -7,9 +7,10 @@ using WeatherAggregator.Library.Interfaces.Entities;
 
 namespace WeatherAggregator.Library.Entities
 {
-    public class WeatherInfo: IWeatherInfo
+    internal class Location : ILocation
     {
-        public double Temperature { get; set; }
-        public string Time { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string Name { get; set; }
     }
 }

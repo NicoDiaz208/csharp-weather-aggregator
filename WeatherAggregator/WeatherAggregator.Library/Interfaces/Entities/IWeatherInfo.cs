@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherAggregator.Library.Interfaces
+namespace WeatherAggregator.Library.Interfaces.Entities
 {
     public interface IWeatherInfo
     {
