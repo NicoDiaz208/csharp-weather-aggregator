@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.MAUI", "WeatherAggregator.MAUI\WeatherAggregator.MAUI.csproj", "{A629B206-6BEF-4BFB-BD7C-0FD695C98B04}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Console", "WeatherAggregator.Console\WeatherAggregator.Console.csproj", "{80FA9B51-EAA2-4BFD-9D63-166C60CF1764}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E} = {A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Library", "WeatherAggregator.Library\WeatherAggregator.Library.csproj", "{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.ASPNet", "WeatherAggregator.ASPNet\WeatherAggregator.ASPNet.csproj", "{79391149-EBF1-497C-A179-B47B02665239}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E} = {A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A629B206-6BEF-4BFB-BD7C-0FD695C98B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A629B206-6BEF-4BFB-BD7C-0FD695C98B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A629B206-6BEF-4BFB-BD7C-0FD695C98B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A629B206-6BEF-4BFB-BD7C-0FD695C98B04}.Release|Any CPU.Build.0 = Release|Any CPU
 		{80FA9B51-EAA2-4BFD-9D63-166C60CF1764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{80FA9B51-EAA2-4BFD-9D63-166C60CF1764}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80FA9B51-EAA2-4BFD-9D63-166C60CF1764}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79391149-EBF1-497C-A179-B47B02665239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79391149-EBF1-497C-A179-B47B02665239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79391149-EBF1-497C-A179-B47B02665239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79391149-EBF1-497C-A179-B47B02665239}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
