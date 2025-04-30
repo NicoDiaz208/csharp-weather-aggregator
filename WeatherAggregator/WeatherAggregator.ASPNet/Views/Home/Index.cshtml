@@ -1,8 +1,31 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var items = ViewBag.Items as List<string>;
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div style="display: flex;">
+        <!-- Sidebar -->
+        <div style="width: 200px; background-color: #f0f0f0; padding: 10px;">
+            <form asp-action="AddItem" method="post" style="margin-bottom: 10px;">
+                <input type="text" name="newItem" placeholder="Neuer Eintrag" />
+                <button type="submit">Hinzufügen</button>
+            </form>
+
+            <ul>
+                @foreach (var item in items)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        </div>
+
+        <!-- Hauptbereich -->
+        <div style="margin-left: 20px;">
+            <h2>Hauptinhalt</h2>
+            <p>Wähle einen Menüpunkt.</p>
+        </div>
+    </div>
+    <p>Temperatur: </p>
 </div>

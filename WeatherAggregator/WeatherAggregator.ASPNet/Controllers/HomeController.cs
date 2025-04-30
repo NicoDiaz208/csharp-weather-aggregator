@@ -10,6 +10,7 @@ namespace WeatherAggregator.ASPNet.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IWeatherService _weatherService;
+        private static List<string> sidebarItems = new List<string> { "Start", "Über uns", "Kontakt" };
 
         public HomeController(ILogger<HomeController> logger, IWeatherService weatherService)
         {
@@ -22,9 +23,20 @@ namespace WeatherAggregator.ASPNet.Controllers
             return View(await _weatherService.GetWeatherAsync(location));
         }
 
+
         public IActionResult Index()
         {
+            ViewBag.Items = sidebarItems;
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddItem(string newItem)
+        {
+            if (!string.IsNullOrWhiteSpace(newItem))
+                sidebarItems.Add(newItem);
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()
