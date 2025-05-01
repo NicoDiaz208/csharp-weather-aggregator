@@ -1,6 +1,8 @@
-﻿@{
+﻿@model WeatherAggregator.Library.Entities.WeatherInfo
+@{
     ViewData["Title"] = "Home Page";
-    var items = ViewBag.Items as List<string>;
+    var items = ViewBag.Items as List<LocationModel>;
+    var selected = ViewBag.SelectedLocation as string;
 }
 
 <div class="text-center">
@@ -16,16 +18,30 @@
             <ul>
                 @foreach (var item in items)
                 {
-                    <li>@item</li>
+                    <form method="post" asp-controller="Home" asp-action="getWeatherInfo" style="display:inline;">
+                        <input type="hidden" name="locationName" value="@item.Name" />
+                        <button type="submit">@item.Name</button>
+                    </form>
                 }
             </ul>
         </div>
 
         <!-- Hauptbereich -->
         <div style="margin-left: 20px;">
-            <h2>Hauptinhalt</h2>
-            <p>Wähle einen Menüpunkt.</p>
+            <h2>Weather</h2>
+            <p>Choose a location.</p>
         </div>
     </div>
-    <p>Temperatur: </p>
+
+    @if (Model?.Temperature != null)
+    {
+        <ul>
+
+                <li> @Model.Temperature °C</li>
+        </ul>
+    }
+    else
+    {
+        <p>No weather data loaded yet.</p>
+    }
 </div>
