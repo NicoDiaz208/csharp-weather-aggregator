@@ -11,7 +11,7 @@ namespace WeatherAggregator.ASPNet.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IWeatherService _weatherService;
+        private readonly IWeatherClientApiService _weatherService;
 
         private static readonly List<LocationModel> _locations = new()
     {
@@ -20,7 +20,7 @@ namespace WeatherAggregator.ASPNet.Controllers
         new LocationModel { Name = "New York", Latitude = 40.7128, Longitude = -74.0060 }
     };
 
-        public HomeController(ILogger<HomeController> logger, IWeatherService weatherService)
+        public HomeController(ILogger<HomeController> logger, IWeatherClientApiService weatherService)
         {
             _logger = logger;
             _weatherService = weatherService;

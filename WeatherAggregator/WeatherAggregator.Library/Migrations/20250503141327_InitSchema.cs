@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -33,7 +34,7 @@ namespace WeatherAggregator.Library.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Temperature = table.Column<double>(type: "double precision", nullable: false),
-                    Time = table.Column<string>(type: "text", nullable: false),
+                    Time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LocationId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>

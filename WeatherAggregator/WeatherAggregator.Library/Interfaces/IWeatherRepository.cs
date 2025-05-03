@@ -10,6 +10,11 @@ namespace WeatherAggregator.Library.Interfaces
     public interface IWeatherRepository
     {
         Task<List<WeatherInfo>> GetAllAsync();
-        Task AddAsync(WeatherInfo weather);
+        Task AddWeatherAsync(WeatherInfo weather);
+        Task AddLocationAsync(Location location);
+        Task<List<WeatherInfo>> GetWeatherInfoFromLocation(int locationId);
+        Task<List<Location>> GetAllLocations();
+        void AddAllWeatherAsync(List<WeatherInfo> data);
+
     }
 }

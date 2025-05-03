@@ -10,9 +10,18 @@ namespace WeatherAggregator.Library.Entities
 {
     public class WeatherInfo: IWeatherInfo
     {
+        public WeatherInfo() { }
+
+        public WeatherInfo(double temperature, DateTime time, int locationId)
+        {
+            Temperature = temperature;
+            Time = time;
+            LocationId = locationId;
+        }
+
         public int Id { get; set; }
         public double Temperature { get; set; }
-        public string Time { get; set; }
+        public DateTime Time { get; set; }
         public int LocationId { get; set; }
 
         [ForeignKey(nameof(LocationId))]

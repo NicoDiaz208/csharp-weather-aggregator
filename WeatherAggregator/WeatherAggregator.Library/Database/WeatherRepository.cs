@@ -23,10 +23,40 @@ namespace WeatherAggregator.Library.Database
             return await _context.WeatherInfos.ToListAsync();
         }
 
-        public async Task AddAsync(WeatherInfo weather)
+        public async Task AddWeatherAsync(WeatherInfo weather)
         {
+            weather.Time = DateTime.SpecifyKind(weather.Time, DateTimeKind.Utc);
             await _context.WeatherInfos.AddAsync(weather);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task AddLocationAsync(Location location)
+        {
+            await _context.Locations.AddAsync(location);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<WeatherInfo>> GetWeatherInfoFromLocation(int locationId)
+        {
+            return await _context.WeatherInfos.Where(x => x.LocationId == locationId).ToListAsync();
+        }
+
+        public async Task<List<Location>> GetAllLocations()
+        {
+            return await _context.Locations.ToListAsync();
+        }
+         
+        public void AddAllWeatherAsync(List<WeatherInfo> data)
+        {
+            data.ForEach(async x => {
+                if (x != null)
+                {
+                    if (x.Location != null)
+                    {
+                        await _context.AddAsync(x);
+                    }
+                }
+            });
         }
     }
 }

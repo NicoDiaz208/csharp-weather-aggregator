@@ -3,55 +3,138 @@ using WeatherAggregator.Library.Entities;
 using WeatherAggregator.Library.Interfaces;
 using WeatherAggregator.Library.Service;
 using Microsoft.EntityFrameworkCore;
-using WeatherAggregator.Library;
-using WeatherAggregator.Library.Interfaces;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-
-var service = new WeatherService(new HttpClient());
-var location = new Location(52.52, 13.41, "idk");
-var call = await service.GetWeatherAsync(location);
-
-if (call != null)
-{
-    Console.WriteLine($"The Weather in Linz is: {call.Temperature}");
-}
-else
-{
-    Console.WriteLine("Is null du huso");
-}
 
 
-var builder = Host.CreateApplicationBuilder(args);
+Console.WriteLine("What do you want to execute?");
+Console.WriteLine("1: Api call");
+Console.WriteLine("2: read Database");
+Console.WriteLine("3: import csv data to database");
+Console.WriteLine("4: add a new location");
 
-// Configure PostgreSQL EF Core
-builder.Services.AddDbContext<WeatherDbContext>(options =>
-    options.UseNpgsql("Host=localhost;Database=weather_db;Username=postgres;Password=passme01"));
+var key = Console.ReadKey();
+switch (key.Key){
+    case ConsoleKey.D1:
+        await callApi();
+        break;
+    case ConsoleKey.D2:
+         await ReadDatabase();
+        break;
 
-// Register service
-builder.Services.AddScoped<WeatherRepository>();
-
-var app = builder.Build();
-
-// Auto-apply migrations
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<WeatherDbContext>();
-    db.Database.Migrate();
+case ConsoleKey.D3:
+        break;
+    case ConsoleKey.D4: 
+        await AddLocation();
+        break;
 }
 
-using (var scope = app.Services.CreateScope())
+async Task callApi()
 {
-    var db = scope.ServiceProvider.GetRequiredService<WeatherDbContext>();
+    var service = new WeatherApiClientService(new HttpClient());
+    var location = new Location(52.52, 13.41, "idk");
+    var call = await service.GetWeatherAsync(location);
 
-    var data = db.WeatherInfos
-                 .Include(w => w.Location)
-                 .ToList();
-
-    foreach (var w in data)
+    if (call != null)
     {
-        Console.WriteLine($"{w.Time}: {w.Temperature}°C in {w.Location.Name} (Lat: {w.Location.Latitude}, Lon: {w.Location.Longitude})");
+        Console.WriteLine($"The Weather in Linz is: {call.Temperature}");
+    }
+    else
+    {
+        Console.WriteLine("Is null");
     }
 }
 
+async Task AddLocation()
+{
+    Console.Write("Location Name: ");
+    String? name = Console.ReadLine();
+    Console.Write("Location Latitude: ");
+    String? latitude = Console.ReadLine();
+    Console.Write("Location Longitude: ");
+    String? longitude = Console.ReadLine();
+
+    if(name == null || latitude == null || longitude == null)
+    {
+        Console.WriteLine("Someting went wrong");
+        return;
+    }
+
+    var builder = Host.CreateApplicationBuilder(args);
+
+    // Configure PostgreSQL EF Core
+    builder.Services.AddDbContext<WeatherDbContext>(options =>
+        options.UseNpgsql("Host=localhost;Database=weather_db;Username=postgres;Password=passme01")); //just for testing, should be changed in real case
+
+    // Register service
+    builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
+
+    var app = builder.Build();
+
+    // Auto-apply migrations
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<WeatherDbContext>();
+        db.Database.Migrate();
+    }
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var repo = scope.ServiceProvider.GetRequiredService<IWeatherRepository>();
+        var locations = await repo.GetAllLocations();
+        Location location = locations.Where(x => x.Name == name).FirstOrDefault();
+        if ( location == null)
+        {
+            location = new Location(double.Parse(latitude), double.Parse(longitude), name);
+            await repo.AddLocationAsync(location);
+            Console.WriteLine("successfully added location");
+        }
+
+        var service = new WeatherApiClientService(new HttpClient());
+        var weatherinfo = await service.GetWeatherAsync(location);
+        weatherinfo.LocationId = location.Id;
+        weatherinfo.Location = location;
+
+        await repo.AddWeatherAsync(weatherinfo);
+        Console.WriteLine("successfully added new temp time thing.");
+    }
+
+}
+
+async Task ImportAndAddToDatabase()
+{
+
+}
+
+ async Task ReadDatabase()
+{
+    var builder = Host.CreateApplicationBuilder(args);
+
+    // Configure PostgreSQL EF Core
+    builder.Services.AddDbContext<WeatherDbContext>(options =>
+        options.UseNpgsql("Host=localhost;Database=weather_db;Username=postgres;Password=passme01"));
+
+    // Register service
+    builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
+
+    var app = builder.Build();
+
+    // Auto-apply migrations
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<WeatherDbContext>();
+        db.Database.Migrate();
+    }
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var repo = scope.ServiceProvider.GetRequiredService<IWeatherRepository>();
+
+        var all = await repo.GetAllAsync();
+        foreach (var entry in all)
+        {
+            Console.WriteLine($"{entry.LocationId} {entry.Time} {entry.Temperature}");
+
+        }
+    }
+}

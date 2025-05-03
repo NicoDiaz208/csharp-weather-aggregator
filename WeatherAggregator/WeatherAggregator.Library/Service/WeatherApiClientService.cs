@@ -10,11 +10,11 @@ using WeatherAggregator.Library.Interfaces.Entities;
 
 namespace WeatherAggregator.Library.Service
 {
-    public class WeatherService: IWeatherService
+    public class WeatherApiClientService: IWeatherClientApiService
     {
         private readonly HttpClient _httpClient;
 
-        public WeatherService(HttpClient httpClient)
+        public WeatherApiClientService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
@@ -37,7 +37,7 @@ namespace WeatherAggregator.Library.Service
                     return new WeatherInfo
                     {
                         Temperature = current.Value<double>("temperature"),
-                        Time = current.Value<string>("time")
+                        Time = current.Value<DateTime>("time")
                     };
                 }
             }
