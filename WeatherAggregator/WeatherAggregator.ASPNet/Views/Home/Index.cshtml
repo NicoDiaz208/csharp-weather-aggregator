@@ -1,47 +1,42 @@
-﻿@model WeatherAggregator.Library.Entities.WeatherInfo
+﻿@model List<WeatherAggregator.ASPNet.Models.LocationModel>
 @{
     ViewData["Title"] = "Home Page";
-    var items = ViewBag.Items as List<LocationModel>;
-    var selected = ViewBag.SelectedLocation as string;
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <div style="display: flex;">
         <!-- Sidebar -->
-        <div style="width: 200px; background-color: #f0f0f0; padding: 10px;">
-            <form asp-action="AddItem" method="post" style="margin-bottom: 10px;">
-                <input type="text" name="newItem" placeholder="Neuer Eintrag" />
-                <button type="submit">Hinzufügen</button>
+        @foreach (var location in Model)
+        {
+            <form asp-action="GetWeatherInfo" method="post">
+                <input type="hidden" name="Name" value="@location.Name" />
+                <input type="hidden" name="Latitude" value="@location.Latitude" />
+                <input type="hidden" name="Longitude" value="@location.Longitude" />
+                <button type="submit">@location.Name</button>
             </form>
-
-            <ul>
-                @foreach (var item in items)
-                {
-                    <form method="post" asp-controller="Home" asp-action="getWeatherInfo" style="display:inline;">
-                        <input type="hidden" name="locationName" value="@item.Name" />
-                        <button type="submit">@item.Name</button>
-                    </form>
-                }
-            </ul>
-        </div>
+        }
 
         <!-- Hauptbereich -->
         <div style="margin-left: 20px;">
             <h2>Weather</h2>
-            <p>Choose a location.</p>
+            @foreach (var location in Model)
+            {
+                <div class="weather-block">
+                    <h3>@location.Name</h3>
+
+                    @if (location.WeatherModels.Any())
+                    {
+                        var latest = location.WeatherModels.Last();
+                        <p>Temperatur: @latest.Temperature&nbsp;°C</p>
+                        <p>Abgerufen um: @latest.DateTime.ToString("HH:mm:ss")</p>
+                    }
+                    else
+                    {
+                        <p>Keine Wetterdaten verfügbar.</p>
+                    }
+                </div>
+            }
         </div>
     </div>
-
-    @if (Model?.Temperature != null)
-    {
-        <ul>
-
-                <li> @Model.Temperature °C</li>
-        </ul>
-    }
-    else
-    {
-        <p>No weather data loaded yet.</p>
-    }
 </div>

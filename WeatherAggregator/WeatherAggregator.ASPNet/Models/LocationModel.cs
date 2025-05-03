@@ -10,9 +10,10 @@
             Latitude = latitude;
             Longitude = longitude;
         }
-
+        
         public string Name { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public List<WeatherModel> WeatherModels { get; set; } = new List<WeatherModel>();
     }
 }
