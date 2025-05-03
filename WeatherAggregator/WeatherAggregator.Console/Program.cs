@@ -23,6 +23,7 @@ switch (key.Key){
         break;
 
 case ConsoleKey.D3:
+        await ImportAndAddToDatabase();
         break;
     case ConsoleKey.D4: 
         await AddLocation();
@@ -103,8 +104,47 @@ async Task AddLocation()
 
 async Task ImportAndAddToDatabase()
 {
+    Console.WriteLine("Filepath: ");
+    String? filepath = Console.ReadLine();
+    Console.WriteLine("Which Location?");
+    String? locationName = Console.ReadLine();
 
+    var builder = Host.CreateApplicationBuilder(args);
+
+    // Configure PostgreSQL EF Core
+    builder.Services.AddDbContext<WeatherDbContext>(options =>
+        options.UseNpgsql("Host=localhost;Database=weather_db;Username=postgres;Password=passme01"));
+
+    // Register service
+    builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
+
+    var app = builder.Build();
+
+    // Auto-apply migrations
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<WeatherDbContext>();
+        db.Database.Migrate();
+    }
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var repo = scope.ServiceProvider.GetRequiredService<IWeatherRepository>();
+
+        var locations = await repo.GetAllLocations();
+        var location = locations.Where(x => x.Name == locationName).FirstOrDefault();
+
+        DataCSVImporter importer = new DataCSVImporter(repo);
+
+        if (location == null || filepath == null)
+        {
+            Console.WriteLine("Error occured.");
+            return;
+        }
+        importer.ImportAndJoin(filepath, location);
+    }
 }
+    
 
  async Task ReadDatabase()
 {

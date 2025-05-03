@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,17 +47,19 @@ namespace WeatherAggregator.Library.Database
             return await _context.Locations.ToListAsync();
         }
          
-        public void AddAllWeatherAsync(List<WeatherInfo> data)
+        public async Task AddAllWeatherAsync(List<WeatherInfo> data)
         {
-            data.ForEach(async x => {
-                if (x != null)
-                {
-                    if (x.Location != null)
-                    {
-                        await _context.AddAsync(x);
-                    }
-                }
-            });
+
+
+            foreach(var x in data)
+            {
+                if (x.Location == null) 
+                    continue;
+
+                await _context.AddAsync(x);
+            }
+
+            await _context.SaveChangesAsync();
         }
     }
 }

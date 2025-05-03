@@ -6,22 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 using WeatherAggregator.Library.Database;
 using WeatherAggregator.Library.Entities;
+using WeatherAggregator.Library.Interfaces;
 
 namespace WeatherAggregator.Library.Service
 {
     public class DataCSVImporter
     {
-        private WeatherRepository _weatherRepository;
-        public DataCSVImporter(WeatherRepository repository) { 
+        private IWeatherRepository _weatherRepository;
+        public DataCSVImporter(IWeatherRepository repository) { 
             _weatherRepository = repository;
         }
-        public bool ImportAndJoin(String filePath, Location location)
+        public async Task ImportAndJoin(String filePath, Location location)
         {
             var weatherList = new List<WeatherInfo>();
             var lines = File.ReadAllLines(filePath);
 
             if (lines.Length <= 1)
-                return false; // No data
+            {
+                Console.WriteLine("No data could be found!");
+                return;
+            }
 
             var header = lines[0].Split(',');
 
@@ -43,6 +47,8 @@ namespace WeatherAggregator.Library.Service
                 if (!DateTime.TryParse(parts[timeIndex], out var time))
                     continue;
 
+                var parsedTime = DateTime.SpecifyKind(time, DateTimeKind.Utc);
+
                 if (!double.TryParse(parts[tempIndex], NumberStyles.Any, CultureInfo.InvariantCulture, out var temperature))
                     continue; // skip if invalid temperature
 
@@ -50,13 +56,14 @@ namespace WeatherAggregator.Library.Service
                 {
                     Location = location,
                     LocationId = location.Id,
-                    Time = time,
+                    Time = parsedTime,
                     Temperature = temperature
                 });
+
+                Console.WriteLine($"{location.Name}, {time}, {temperature}");
             }
 
-            _weatherRepository.AddAllWeatherAsync(weatherList);
-            return true;
+            await _weatherRepository.AddAllWeatherAsync(weatherList);
         }
     }
 }
