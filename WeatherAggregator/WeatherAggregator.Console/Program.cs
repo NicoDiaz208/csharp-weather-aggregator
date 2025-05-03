@@ -82,7 +82,7 @@ async Task AddLocation()
     using (var scope = app.Services.CreateScope())
     {
         var repo = scope.ServiceProvider.GetRequiredService<IWeatherRepository>();
-        var locations = await repo.GetAllLocations();
+        var locations = await repo.GetAllLocationsAsync();
         Location location = locations.Where(x => x.Name == name).FirstOrDefault();
         if ( location == null)
         {
@@ -131,7 +131,7 @@ async Task ImportAndAddToDatabase()
     {
         var repo = scope.ServiceProvider.GetRequiredService<IWeatherRepository>();
 
-        var locations = await repo.GetAllLocations();
+        var locations = await repo.GetAllLocationsAsync();
         var location = locations.Where(x => x.Name == locationName).FirstOrDefault();
 
         DataCSVImporter importer = new DataCSVImporter(repo);

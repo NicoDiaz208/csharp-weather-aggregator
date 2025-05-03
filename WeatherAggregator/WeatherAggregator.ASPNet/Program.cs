@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using WeatherAggregator.Library.Database;
 using WeatherAggregator.Library.Interfaces;
 using WeatherAggregator.Library.Service;
 
@@ -7,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient<IWeatherClientApiService, WeatherApiClientService>();
+
+builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
+
+// Configure PostgreSQL EF Core
+builder.Services.AddDbContext<WeatherDbContext>(options =>
+    options.UseNpgsql("Host=localhost;Database=weather_db;Username=postgres;Password=passme01"));
 
 var app = builder.Build();
 

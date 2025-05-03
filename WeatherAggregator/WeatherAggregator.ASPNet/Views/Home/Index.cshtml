@@ -1,4 +1,4 @@
-﻿@model List<WeatherAggregator.ASPNet.Models.LocationModel>
+﻿@model WeatherAggregator.ASPNet.Models.HomeViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,9 +7,10 @@
     <h1 class="display-4">Welcome</h1>
     <div style="display: flex;">
         <!-- Sidebar -->
-        @foreach (var location in Model)
+        @foreach (var location in Model.Locations)
         {
             <form asp-action="GetWeatherInfo" method="post">
+                <input type="hidden" name="Id" value="@location.Id" />
                 <input type="hidden" name="Name" value="@location.Name" />
                 <input type="hidden" name="Latitude" value="@location.Latitude" />
                 <input type="hidden" name="Longitude" value="@location.Longitude" />
@@ -17,26 +18,25 @@
             </form>
         }
 
-        <!-- Hauptbereich -->
         <div style="margin-left: 20px;">
-            <h2>Weather</h2>
-            @foreach (var location in Model)
-            {
-                <div class="weather-block">
-                    <h3>@location.Name</h3>
+            <h2>Weather in @Model.CurrentLocation.Name</h2>
 
-                    @if (location.WeatherModels.Any())
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Temperature (°C)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in Model.WeatherModels.OrderByDescending(x => x.DateTime))
                     {
-                        var latest = location.WeatherModels.Last();
-                        <p>Temperatur: @latest.Temperature&nbsp;°C</p>
-                        <p>Abgerufen um: @latest.DateTime.ToString("HH:mm:ss")</p>
+                        <tr>
+                            <td>@data.DateTime.ToString("g")</td> <!-- "g" = short date + short time -->
+                            <td>@data.Temperature</td>
+                        </tr>
                     }
-                    else
-                    {
-                        <p>Keine Wetterdaten verfügbar.</p>
-                    }
-                </div>
-            }
+                </tbody>
+            </table>
         </div>
-    </div>
 </div>

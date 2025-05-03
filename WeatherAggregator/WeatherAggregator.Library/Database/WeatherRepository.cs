@@ -42,7 +42,7 @@ namespace WeatherAggregator.Library.Database
             return await _context.WeatherInfos.Where(x => x.LocationId == locationId).ToListAsync();
         }
 
-        public async Task<List<Location>> GetAllLocations()
+        public async Task<List<Location>> GetAllLocationsAsync()
         {
             return await _context.Locations.ToListAsync();
         }

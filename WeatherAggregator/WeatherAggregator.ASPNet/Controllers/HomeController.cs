@@ -1,10 +1,8 @@
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc;
 using WeatherAggregator.ASPNet.Models;
 using WeatherAggregator.Library.Entities;
 using WeatherAggregator.Library.Interfaces;
-using WeatherAggregator.Library.Interfaces.Entities;
 
 namespace WeatherAggregator.ASPNet.Controllers
 {
@@ -12,44 +10,42 @@ namespace WeatherAggregator.ASPNet.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IWeatherClientApiService _weatherService;
+        private readonly IWeatherRepository _weatherRepository;
 
-        private static readonly List<LocationModel> _locations = new()
-    {
-        new LocationModel { Name = "Linz", Latitude = 48.3069, Longitude = 14.2858 },
-        new LocationModel { Name = "Berlin", Latitude = 52.52, Longitude = 13.405 },
-        new LocationModel { Name = "New York", Latitude = 40.7128, Longitude = -74.0060 }
-    };
+        private HomeViewModel _homeViewModel = new HomeViewModel();
 
-        public HomeController(ILogger<HomeController> logger, IWeatherClientApiService weatherService)
+        public HomeController(ILogger<HomeController> logger, IWeatherClientApiService weatherService, IWeatherRepository weatherRepository)
         {
             _logger = logger;
             _weatherService = weatherService;
+            _weatherRepository = weatherRepository;
         }
 
         [HttpPost]
         public async Task<IActionResult> GetWeatherInfo(LocationModel location)
         {
-            Location loc = new Location(location.Latitude, location.Longitude, location.Name);
+            _homeViewModel.CurrentLocation = location;
+            var weatherdata = await _weatherRepository.GetWeatherInfoFromLocation(location.Id);
+            if (weatherdata != null)
+            {
+                _homeViewModel.WeatherModels = weatherdata.Select(x => new WeatherModel(x.Temperature, x.Time)).ToList();
+            }
+            else { Console.WriteLine("Location weather data was null " + location.Name); }
 
-            Console.WriteLine("requesting weatherdata from {0}", location.Name);
-            var weather = await _weatherService.GetWeatherAsync(loc);
-            _locations.Where(x => x.Name == location.Name).ToList().ForEach(x => x.WeatherModels.Add(new WeatherModel(weather.Temperature, DateTime.Now)));
-            return View("Index", _locations);
+            return View("Index", _homeViewModel);
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var weather = new List<WeatherModel>() { 
-                new WeatherModel(24, DateTime.Parse("1.01.2000")), 
-                new WeatherModel(24, DateTime.Parse("2.01.2000")),
-                new WeatherModel(24, DateTime.Parse("3.01.2000")),
-                new WeatherModel(24, DateTime.Parse("4.01.2000")),
-            };
-            var shanghai = new LocationModel("Shanghai", 31.221518, 121.544380);
-            shanghai.WeatherModels = weather;
-            _locations.Add(shanghai);
-            return View(_locations);
+
+            var locations = await _weatherRepository.GetAllLocationsAsync();
+
+            _homeViewModel.Locations.AddRange(
+                locations.Select(x => new LocationModel(x.Name, x.Latitude, x.Longitude, x.Id))
+            );
+
+            return View(_homeViewModel);
         }
 
         public IActionResult Privacy()
