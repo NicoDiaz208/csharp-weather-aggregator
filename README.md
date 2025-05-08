@@ -14,7 +14,8 @@ A small csharp application which displays weather information using postgresql a
    - Initialize the key storage
      ```bash dotnet user-secrets --project WeatherAggregator.Library init```
    - set your api key of WeatherApi.com
-     ```bash dotnet user-secrets set "WeatherApiCom:ApiKey" "your-api-key" ```
+     ```bash dotnet user-secrets --project WeatherAggregator.Console set "WeatherApiCom:ApiKey" "your-api-key" ```
+     ```bash dotnet user-secrets --project WeatherAggregator.ASPNet set "WeatherApiCom:ApiKey" "your-api-key" ```
    - set your api connection string for Console and asp.net
       ```bash dotnet user-secrets --project WeatherAggregator.Console init```
       ```bash dotnet user-secrets --project WeatherAggregator.ASPNet init```
