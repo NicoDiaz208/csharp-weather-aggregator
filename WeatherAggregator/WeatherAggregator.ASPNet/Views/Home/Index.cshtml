@@ -6,28 +6,24 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <div style="display: flex;">
-            <!-- Sidebar -->
-            @foreach (var location in Model.Locations)
-            {
-                <form asp-action="GetWeatherInfo" method="post">
-                    <input type="hidden" name="Id" value="@location.Id" />
-                    <input type="hidden" name="Name" value="@location.Name" />
-                    <input type="hidden" name="Latitude" value="@location.Latitude" />
-                    <input type="hidden" name="Longitude" value="@location.Longitude" />
-                    <button type="submit">@location.Name</button>
-                </form>
-            }
-            <a asp-controller="Locations" asp-action="Create" class="btn btn-primary">Add New Location</a>
-        </div>
+    <div class="d-flex flex-wrap gap-2">
+        @foreach (var location in Model.Locations)
+        {
+            <form asp-action="GetWeatherInfo" method="post" class="d-inline">
+                <input type="hidden" name="Id" value="@location.Id" />
+                <input type="hidden" name="Name" value="@location.Name" />
+                <input type="hidden" name="Latitude" value="@location.Latitude" />
+                <input type="hidden" name="Longitude" value="@location.Longitude" />
+                <button type="submit" class="btn btn-light border">@location.Name</button>
+            </form>
+        }
+        <a asp-controller="Locations" asp-action="Create" class="btn btn-primary">Add New Location</a>
     </div>
 
-  
     <div>
 
-        @if (Model.WeatherModels != null && Model.WeatherModels.Any())
+       @if(Model.WeatherApiPrediction != null && Model.WeatherApiPrediction.Any() &&
+        Model.MeteoPrediction != null && Model.MeteoPrediction.Any())
         {
             <div>
                 <canvas id="temperatureChart" width="100%" height="40"></canvas>
@@ -93,6 +89,10 @@
                 });
             </script>
 
+        }
+        else
+        {
+            <p>No forecast data available for this location.</p>
         }
 
 

@@ -40,7 +40,7 @@ namespace WeatherAggregator.ASPNet.Controllers
                 _homeViewModel.WeatherApiPrediction = data.Select(x => new WeatherModel(x.Temperature, x.Time)).ToList();
 
                 var data2 = await _weatherService.CallMeteoApi(locationEntity, DateTime.Now, DateTime.Now.AddDays(5));
-                _homeViewModel.MeteoPrediction = data.Select(x => new WeatherModel(x.Temperature, x.Time)).ToList();
+                _homeViewModel.MeteoPrediction = data2.Select(x => new WeatherModel(x.Temperature, x.Time)).ToList();
 
                 Console.WriteLine("weatherapi: " + data.Count);
                 Console.WriteLine("meteoapi: " + data2.Count);
