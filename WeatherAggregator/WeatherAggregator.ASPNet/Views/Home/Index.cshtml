@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="d-flex flex-wrap gap-2">
+    <div class="d-flex gap-2">
         @foreach (var location in Model.Locations)
         {
             <form asp-action="GetWeatherInfo" method="post" class="d-inline">
@@ -14,22 +14,18 @@
                 <input type="hidden" name="Name" value="@location.Name" />
                 <input type="hidden" name="Latitude" value="@location.Latitude" />
                 <input type="hidden" name="Longitude" value="@location.Longitude" />
+               
                 <button type="submit" class="btn btn-light border">@location.Name</button>
+            </form>
+            <form asp-action="DeleteLocation" method="post" onsubmit="return confirm('Are you sure?');">
+                <input type="hidden" name="Id" value="@location.Id" />
+                <button type="submit" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash"></i>
+                </button>
             </form>
         }
         <a asp-controller="Locations" asp-action="Create" class="btn btn-primary">Add New Location</a>
     </div>
-
-    @if(Model.CurrentLocation != null)
-    {
-        <div>
-			<form asp-action="DeleteLocation" method="post" class="d-inline">
-                <button type="submit" class="btn btn-light border">Delete @Model.CurrentLocation.Name</button>
-            </form>
-        </div>
-    }
-    
-
     <div>
 
        @if(Model.WeatherApiPrediction != null && Model.WeatherApiPrediction.Any() &&
@@ -104,7 +100,5 @@
         {
             <p>No forecast data available for this location.</p>
         }
-
-
     </div>
 </body>

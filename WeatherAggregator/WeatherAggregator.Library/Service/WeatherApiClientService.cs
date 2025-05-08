@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using Newtonsoft.Json.Linq;
 using WeatherAggregator.Library.Entities;
 using WeatherAggregator.Library.Interfaces;
 using WeatherAggregator.Library.Interfaces.Entities;
-using static System.Net.WebRequestMethods;
 
 namespace WeatherAggregator.Library.Service
 {

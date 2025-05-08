@@ -1,13 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WeatherAggregator.Library.Entities;
 using WeatherAggregator.Library.Interfaces;
-using WeatherAggregator.Library.Interfaces.Entities;
 
 namespace WeatherAggregator.Library.Database
 {
@@ -54,8 +47,6 @@ namespace WeatherAggregator.Library.Database
          
         public async Task AddAllWeatherAsync(List<WeatherInfo> data)
         {
-
-
             foreach(var x in data)
             {
                 if (x.Location == null) 
