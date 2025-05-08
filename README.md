@@ -10,6 +10,17 @@ A small csharp application which displays weather information using postgresql a
     ```bash dotnet tool install --global dotnet-ef ```
     - Delete Migration in WeatherAggregator.Library and run following:
     ```bash dotnet ef migrations add InitSchema --project WeatherAggregator.Library --startup-project WeatherAggregator.ASPNet dotnet ef database update ```
+- Dotnet Secret management
+   - Initialize the key storage
+     ```bash dotnet user-secrets --project WeatherAggregator.Library init```
+   - set your api key of WeatherApi.com
+     ```bash dotnet user-secrets set "WeatherApiCom:ApiKey" "your-api-key" ```
+   - set your api connection string for Console and asp.net
+      ```bash dotnet user-secrets --project WeatherAggregator.Console init```
+      ```bash dotnet user-secrets --project WeatherAggregator.ASPNet init```
+      ```bash dotnet user-secrets --project WeatherAggregator.Console set "ConnectionStrings:DefaultConnection" "Host=localhost;Database=weather_db;Username=your-username;Password=your-password" ```
+      ```bash dotnet user-secrets --project WeatherAggregator.ASPNet set "ConnectionStrings:DefaultConnection" "Host=localhost;Database=weather_db;Username=your-username;Password=your-password" ```
+     
 
 
 Todos for Project WeatherAggregator:
