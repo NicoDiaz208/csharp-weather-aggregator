@@ -6,6 +6,10 @@ using WeatherAggregator.Library.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Rebuild the configuration pipeline explicitly
+builder.Configuration.AddUserSecrets<Program>().AddEnvironmentVariables();
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -14,8 +18,10 @@ builder.Services.AddHttpClient<IWeatherClientApiService, WeatherApiClientService
 builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
 
 // Configure PostgreSQL EF Core
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<WeatherDbContext>(options =>
-    options.UseNpgsql("Host=localhost;Database=weather_db;Username=postgres;Password=passme01"));
+    options.UseNpgsql(connectionString)); 
 
 var app = builder.Build();
 

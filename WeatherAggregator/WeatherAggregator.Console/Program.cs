@@ -5,7 +5,13 @@ using WeatherAggregator.Library.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
+var config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true) // optional for console apps
+            .AddUserSecrets<Program>() // loads secrets.json from user profile
+            .AddEnvironmentVariables() // allows for production use
+            .Build();
 
 Console.WriteLine("What do you want to execute?");
 Console.WriteLine("1: Api call");
@@ -68,7 +74,7 @@ async Task AddLocation()
 
     // Configure PostgreSQL EF Core
     builder.Services.AddDbContext<WeatherDbContext>(options =>
-        options.UseNpgsql("Host=localhost;Database=weather_db;Username=postgres;Password=passme01")); //just for testing, should be changed in real case
+        options.UseNpgsql(config.GetConnectionString("DefaultConnection"))); //just for testing, should be changed in real case
 
     // Register service
     builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
@@ -116,7 +122,7 @@ async Task ImportAndAddToDatabase()
 
     // Configure PostgreSQL EF Core
     builder.Services.AddDbContext<WeatherDbContext>(options =>
-        options.UseNpgsql("Host=localhost;Database=weather_db;Username=postgres;Password=passme01"));
+        options.UseNpgsql(config.GetConnectionString("DefaultConnection")));
 
     // Register service
     builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
@@ -155,7 +161,7 @@ async Task ImportAndAddToDatabase()
 
     // Configure PostgreSQL EF Core
     builder.Services.AddDbContext<WeatherDbContext>(options =>
-        options.UseNpgsql("Host=localhost;Database=weather_db;Username=postgres;Password=passme01"));
+        options.UseNpgsql(config.GetConnectionString("DefaultConnection")));
 
     // Register service
     builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
