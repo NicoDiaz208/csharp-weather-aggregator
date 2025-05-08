@@ -20,10 +20,9 @@ namespace WeatherAggregator.Library.Service
         {
             _httpClient = httpClient;
         }
-
-        public async Task<List<WeatherInfo?>> Forecast(ILocation location, DateTime start, DateTime end)
+         public async Task<List<WeatherInfo>> CallMeteoApi(ILocation location, DateTime start, DateTime end)
         {
-            string url = $"https://api.open-meteo.com/v1/forecast?latitude={location.Latitude.ToString(CultureInfo.InvariantCulture) }&longitude={location.Longitude.ToString(CultureInfo.InvariantCulture)}&hourly=temperature_2m&start_date={start.ToString("yyyy-MM-dd")}&end_date={end.ToString("yyyy-MM-dd")}";
+            string url = $"https://api.open-meteo.com/v1/forecast?latitude={location.Latitude.ToString(CultureInfo.InvariantCulture)}&longitude={location.Longitude.ToString(CultureInfo.InvariantCulture)}&hourly=temperature_2m&start_date={start.ToString("yyyy-MM-dd")}&end_date={end.ToString("yyyy-MM-dd")}";
             var list = new List<WeatherInfo>();
             try
             {
@@ -32,7 +31,7 @@ namespace WeatherAggregator.Library.Service
 
                 string content = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(content);
-                
+
                 Console.WriteLine(json);
                 var hourly = json["hourly"];
                 if (hourly != null)
@@ -59,6 +58,51 @@ namespace WeatherAggregator.Library.Service
             }
 
             return list;
+        }
+
+         public async Task<List<WeatherInfo>> CallWeatherApi(ILocation location, DateTime start, DateTime end)
+        {
+            var days = end - start;
+            string url = $"https://api.weatherapi.com/v1/forecast.json?q={location.Latitude},{location.Longitude}&days={days.Days}";
+            var list = new List<WeatherInfo>();
+            try
+            {
+                var response = await _httpClient.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                string content = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(content);
+
+                var hours = json["forecast"]?["forecastday"]?[0]?["hour"];
+                if (hours != null)
+                {
+                    foreach (var hour in hours)
+                    {
+                        var time = hour["time"]?.ToString();
+                        var temp = hour["temp_c"]?.ToObject<double>();
+
+                        if (time != null && temp != null)
+                        {
+                            list.Add(new WeatherInfo
+                            {
+                                Time = DateTime.Parse(time),
+                                Temperature = temp.Value
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Weather fetch failed: {ex.Message}");
+            }
+
+            return list;
+        }
+
+        public async Task<List<WeatherInfo?>> Forecast(ILocation location, DateTime start, DateTime end)
+        {
+            return null;
         }
         public async Task<WeatherInfo?> GetWeatherAsync(ILocation location)
         {

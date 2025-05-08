@@ -13,5 +13,9 @@ namespace WeatherAggregator.Library.Interfaces
         Task<WeatherInfo?> GetWeatherAsync(ILocation location);
 
         Task<List<WeatherInfo?>> Forecast(ILocation location, DateTime start, DateTime end);
+        Task<List<WeatherInfo>> CallWeatherApi(ILocation location, DateTime start, DateTime end);
+        Task<List<WeatherInfo>> CallMeteoApi(ILocation location, DateTime start, DateTime end);
+
+
     }
 }

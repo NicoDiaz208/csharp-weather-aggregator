@@ -13,6 +13,23 @@ var config = new ConfigurationBuilder()
             .AddEnvironmentVariables() // allows for production use
             .Build();
 
+var builder = Host.CreateApplicationBuilder(args);
+
+// Configure PostgreSQL EF Core
+builder.Services.AddDbContext<WeatherDbContext>(options =>
+    options.UseNpgsql(config.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddHttpClient<IWeatherClientApiService, WeatherApiClientService>()
+    .ConfigureHttpClient(client =>
+    {
+        client.DefaultRequestHeaders.Add("key", config["WeatherApiCom:ApiKey"]);
+    });
+
+// Register service
+builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
+
+var app = builder.Build();
+
 Console.WriteLine("What do you want to execute?");
 Console.WriteLine("1: Api call");
 Console.WriteLine("2: read Database");
@@ -38,9 +55,10 @@ case ConsoleKey.D3:
 
 async Task callApi()
 {
-    var service = new WeatherApiClientService(new HttpClient());
+
+    var service = app.Services.GetRequiredService<IWeatherClientApiService>();
     var location = new Location(52.52, 13.41, "idk");
-    var call = await service.Forecast(location, DateTime.Now, DateTime.Now.AddDays(5));
+    var call = await service.CallWeatherApi(location, DateTime.Now, DateTime.Now.AddDays(5));
 
     if (call != null)
     {
@@ -69,17 +87,6 @@ async Task AddLocation()
         Console.WriteLine("Someting went wrong");
         return;
     }
-
-    var builder = Host.CreateApplicationBuilder(args);
-
-    // Configure PostgreSQL EF Core
-    builder.Services.AddDbContext<WeatherDbContext>(options =>
-        options.UseNpgsql(config.GetConnectionString("DefaultConnection"))); //just for testing, should be changed in real case
-
-    // Register service
-    builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
-
-    var app = builder.Build();
 
     // Auto-apply migrations
     using (var scope = app.Services.CreateScope())
@@ -118,17 +125,6 @@ async Task ImportAndAddToDatabase()
     Console.WriteLine("Which Location?");
     String? locationName = Console.ReadLine();
 
-    var builder = Host.CreateApplicationBuilder(args);
-
-    // Configure PostgreSQL EF Core
-    builder.Services.AddDbContext<WeatherDbContext>(options =>
-        options.UseNpgsql(config.GetConnectionString("DefaultConnection")));
-
-    // Register service
-    builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
-
-    var app = builder.Build();
-
     // Auto-apply migrations
     using (var scope = app.Services.CreateScope())
     {
@@ -157,17 +153,6 @@ async Task ImportAndAddToDatabase()
 
  async Task ReadDatabase()
 {
-    var builder = Host.CreateApplicationBuilder(args);
-
-    // Configure PostgreSQL EF Core
-    builder.Services.AddDbContext<WeatherDbContext>(options =>
-        options.UseNpgsql(config.GetConnectionString("DefaultConnection")));
-
-    // Register service
-    builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
-
-    var app = builder.Build();
-
     // Auto-apply migrations
     using (var scope = app.Services.CreateScope())
     {
