@@ -19,6 +19,45 @@ namespace WeatherAggregator.Library.Service
             _httpClient = httpClient;
         }
 
+        public async Task<List<WeatherInfo?>> Forecast(ILocation location, DateTime start, DateTime end)
+        {
+            string url = $"https://api.open-meteo.com/v1/forecast?latitude={location.Latitude}&longitude={location.Longitude}&hourly=temperature_2m&start_date={start.ToString("yyyy-MM-dd")}&end_date={end.ToString("yyyy-MM-dd")}";
+            var list = new List<WeatherInfo>();
+            try
+            {
+                var response = await _httpClient.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                string content = await response.Content.ReadAsStringAsync();
+                var json = JObject.Parse(content);
+                
+                Console.WriteLine(json);
+                var hourly = json["hourly"];
+                if (hourly != null)
+                {
+                    var timeArray = hourly["time"]?.ToObject<List<string>>();
+                    var tempArray = hourly["temperature_2m"]?.ToObject<List<double>>();
+
+                    if (timeArray != null && tempArray != null && timeArray.Count == tempArray.Count)
+                    {
+                        for (int i = 0; i < timeArray.Count; i++)
+                        {
+                            list.Add(new WeatherInfo
+                            {
+                                Time = DateTime.Parse(timeArray[i]),
+                                Temperature = tempArray[i]
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Weather fetch failed: {ex.Message}");
+            }
+
+            return list;
+        }
         public async Task<WeatherInfo?> GetWeatherAsync(ILocation location)
         {
             string url = $"https://api.open-meteo.com/v1/forecast?latitude={location.Latitude}&longitude={location.Longitude}&current_weather=true";
@@ -48,5 +87,6 @@ namespace WeatherAggregator.Library.Service
 
             return null;
         }
+
     }
 }

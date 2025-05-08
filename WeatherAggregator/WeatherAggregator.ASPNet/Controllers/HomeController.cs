@@ -32,7 +32,17 @@ namespace WeatherAggregator.ASPNet.Controllers
             }
             else { Console.WriteLine("Location weather data was null " + location.Name); }
 
-            return View("Index", _homeViewModel);
+            //Add Predicted Set of WeatherInfo
+            var locationEntity = await _weatherRepository.GetLocationFromId(location.Id);
+            if (locationEntity != null)
+            {
+                var data = await _weatherService.Forecast(locationEntity, DateTime.Now, DateTime.Now.AddDays(5));
+                _homeViewModel.WeatherModels = data.Select(x => new WeatherModel(x.Temperature, x.Time)).ToList();
+            }
+            else { Console.WriteLine("Could not load Forecast"); }
+
+
+                return View("Index", _homeViewModel);
         }
 
         [HttpPost]

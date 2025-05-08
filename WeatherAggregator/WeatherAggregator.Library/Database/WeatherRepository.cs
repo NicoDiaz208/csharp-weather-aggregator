@@ -24,6 +24,10 @@ namespace WeatherAggregator.Library.Database
             return await _context.WeatherInfos.ToListAsync();
         }
 
+        public async Task<Location?> GetLocationFromId(int id)
+        {
+            return await _context.Locations.Where(x => x.Id == id).FirstOrDefaultAsync();
+        }
         public async Task AddWeatherAsync(WeatherInfo weather)
         {
             weather.Time = DateTime.SpecifyKind(weather.Time, DateTimeKind.Utc);

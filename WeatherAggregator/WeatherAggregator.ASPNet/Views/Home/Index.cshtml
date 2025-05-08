@@ -17,44 +17,27 @@
                 <button type="submit">@location.Name</button>
             </form>
         }
+        <a asp-controller="Locations" asp-action="Create" class="btn btn-primary">Add New Location</a>
+    </div>
 
-        <h3>Add New Location</h3>
-        <form asp-action="AddLocation" method="post">
-            <div class="form-group">
-                <label for="Name">Name</label>
-                <input type="text" class="form-control" name="Name" required />
-            </div>
-            <div class="form-group">
-                <label for="Latitude">Latitude</label>
-                <input type="number" class="form-control" name="Latitude" step="any" required />
-            </div>
-            <div class="form-group">
-                <label for="Longitude">Longitude</label>
-                <input type="number" class="form-control" name="Longitude" step="any" required />
-            </div>
-            <button type="submit" class="btn btn-success">Add Location</button>
-        </form>
+    <div style="margin-left: 20px;">
+        <h2>Weather in @Model.CurrentLocation.Name</h2>
 
-
-        <div style="margin-left: 20px;">
-            <h2>Weather in @Model.CurrentLocation.Name</h2>
-
-            <table class="table table-striped">
-                <thead>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Temperature (°C)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var data in Model.WeatherModels.OrderByDescending(x => x.DateTime))
+                {
                     <tr>
-                        <th>Time</th>
-                        <th>Temperature (°C)</th>
+                        <td>@data.DateTime.ToString("g")</td> <!-- "g" = short date + short time -->
+                        <td>@data.Temperature</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var data in Model.WeatherModels.OrderByDescending(x => x.DateTime))
-                    {
-                        <tr>
-                            <td>@data.DateTime.ToString("g")</td> <!-- "g" = short date + short time -->
-                            <td>@data.Temperature</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
 </div>

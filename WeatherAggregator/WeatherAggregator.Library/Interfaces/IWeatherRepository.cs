@@ -16,5 +16,7 @@ namespace WeatherAggregator.Library.Interfaces
         Task<List<Location>> GetAllLocationsAsync();
         Task AddAllWeatherAsync(List<WeatherInfo> data);
 
+        Task<Location?> GetLocationFromId(int id);
+
     }
 }

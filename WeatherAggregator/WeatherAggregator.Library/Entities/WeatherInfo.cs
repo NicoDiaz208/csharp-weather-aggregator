@@ -22,6 +22,7 @@ namespace WeatherAggregator.Library.Entities
         public int Id { get; set; }
         public double Temperature { get; set; }
         public DateTime Time { get; set; }
+        //public bool isPredicted { get; set; }  //TODO Maybe do later
         public int LocationId { get; set; }
 
         [ForeignKey(nameof(LocationId))]

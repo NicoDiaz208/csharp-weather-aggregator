@@ -10,6 +10,8 @@ namespace WeatherAggregator.Library.Interfaces
 {
     public interface IWeatherClientApiService
     {
-        Task<WeatherInfo> GetWeatherAsync(ILocation location);
+        Task<WeatherInfo?> GetWeatherAsync(ILocation location);
+
+        Task<List<WeatherInfo?>> Forecast(ILocation location, DateTime start, DateTime end);
     }
 }

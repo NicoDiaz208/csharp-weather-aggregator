@@ -34,11 +34,14 @@ async Task callApi()
 {
     var service = new WeatherApiClientService(new HttpClient());
     var location = new Location(52.52, 13.41, "idk");
-    var call = await service.GetWeatherAsync(location);
+    var call = await service.Forecast(location, DateTime.Now, DateTime.Now.AddDays(5));
 
     if (call != null)
     {
-        Console.WriteLine($"The Weather in Linz is: {call.Temperature}");
+        foreach (var data in call)
+        {
+            Console.WriteLine($"The Weather in Linz was: {data.Temperature} at {data.Time}");
+        }
     }
     else
     {
@@ -96,7 +99,7 @@ async Task AddLocation()
         weatherinfo.LocationId = location.Id;
         weatherinfo.Location = location;
 
-        await repo.AddWeatherAsync(weatherinfo);
+        //await repo.AddWeatherAsync(weatherinfo);
         Console.WriteLine("successfully added new temp time thing.");
     }
 

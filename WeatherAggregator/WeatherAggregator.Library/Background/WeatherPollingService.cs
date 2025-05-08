@@ -44,8 +44,8 @@ namespace WeatherAggregator.Library.Background
 
                         db.WeatherInfos.Add(new WeatherInfo
                         {
-                            Temperature = weather.Temperature,
-                            Time = weather.Time,
+                            Temperature = 2,//TODO weather.Temperature,
+                            Time = DateTime.Now, //TODO weather.Time,
                             LocationId = dbLocation.Id
                         });
                         await db.SaveChangesAsync();
