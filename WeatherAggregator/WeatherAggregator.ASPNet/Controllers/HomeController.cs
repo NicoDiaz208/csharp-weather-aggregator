@@ -81,5 +81,12 @@ namespace WeatherAggregator.ASPNet.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteLocation(LocationModel location)
+        {
+            await _weatherRepository.DeleteLocation(location.Id);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -20,6 +20,16 @@
         <a asp-controller="Locations" asp-action="Create" class="btn btn-primary">Add New Location</a>
     </div>
 
+    @if(Model.CurrentLocation != null)
+    {
+        <div>
+			<form asp-action="DeleteLocation" method="post" class="d-inline">
+                <button type="submit" class="btn btn-light border">Delete @Model.CurrentLocation.Name</button>
+            </form>
+        </div>
+    }
+    
+
     <div>
 
        @if(Model.WeatherApiPrediction != null && Model.WeatherApiPrediction.Any() &&
