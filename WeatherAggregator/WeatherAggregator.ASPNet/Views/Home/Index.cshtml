@@ -38,23 +38,35 @@
                     const ctx = document.getElementById('temperatureChart');
                     if (!ctx) return;
 
-                    const labels = [@Html.Raw(string.Join(", ", Model.WeatherModels
-                    .OrderBy(x => x.DateTime)
-                    .Select(x => $"'{x.DateTime:yyyy-MM-dd HH:mm}'")))];
+                                    const labels = [@Html.Raw(string.Join(", ", Model.MeteoPrediction
+                .OrderBy(x => x.DateTime)
+                .Select(x => $"'{x.DateTime:yyyy-MM-dd HH:mm}'")))];
 
-                    const temps = [@Html.Raw(string.Join(", ", Model.WeatherModels
-                    .OrderBy(x => x.DateTime)
-                    .Select(x => x.Temperature.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture))))];
+                const meteoTemps = [@Html.Raw(string.Join(", ", Model.MeteoPrediction
+                .OrderBy(x => x.DateTime)
+                .Select(x => x.Temperature.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture))))];
+
+                const weatherApiTemps = [@Html.Raw(string.Join(", ", Model.WeatherApiPrediction
+                .OrderBy(x => x.DateTime)
+                .Select(x => x.Temperature.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture))))];
 
                     const data = {
                         labels: labels,
-                        datasets: [{
-                            label: 'Temperature (°C)',
-                            data: temps,
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 2,
-                            tension: 0.1
-                        }]
+                                        datasets: [{
+                    label: 'Meteo Prediction (°C)',
+                    data: meteoTemps,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    tension: 0.1
+                },
+                {
+                    label: 'WeatherAPI Prediction (°C)',
+                    data: weatherApiTemps,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                    tension: 0.1
+                }]
+
                     };
 
                     new Chart(ctx, {

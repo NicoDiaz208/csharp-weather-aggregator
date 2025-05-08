@@ -13,7 +13,11 @@ builder.Configuration.AddUserSecrets<Program>().AddEnvironmentVariables();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddHttpClient<IWeatherClientApiService, WeatherApiClientService>();
+builder.Services.AddHttpClient<IWeatherClientApiService, WeatherApiClientService>()
+    .ConfigureHttpClient(client =>
+    {
+        client.DefaultRequestHeaders.Add("key", builder.Configuration["WeatherApiCom:ApiKey"]);
+    });
 
 builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
 

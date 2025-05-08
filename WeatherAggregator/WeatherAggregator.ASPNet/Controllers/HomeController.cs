@@ -36,8 +36,14 @@ namespace WeatherAggregator.ASPNet.Controllers
             var locationEntity = await _weatherRepository.GetLocationFromId(location.Id);
             if (locationEntity != null)
             {
-                var data = await _weatherService.Forecast(locationEntity, DateTime.Now, DateTime.Now.AddDays(5));
-                _homeViewModel.WeatherModels = data.Select(x => new WeatherModel(x.Temperature, x.Time)).ToList();
+                var data = await _weatherService.CallWeatherApi(locationEntity, DateTime.Now, DateTime.Now.AddDays(5));
+                _homeViewModel.WeatherApiPrediction = data.Select(x => new WeatherModel(x.Temperature, x.Time)).ToList();
+
+                var data2 = await _weatherService.CallMeteoApi(locationEntity, DateTime.Now, DateTime.Now.AddDays(5));
+                _homeViewModel.MeteoPrediction = data.Select(x => new WeatherModel(x.Temperature, x.Time)).ToList();
+
+                Console.WriteLine("weatherapi: " + data.Count);
+                Console.WriteLine("meteoapi: " + data2.Count);
             }
             else { Console.WriteLine("Could not load Forecast"); }
 

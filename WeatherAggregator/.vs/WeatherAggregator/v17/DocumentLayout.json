@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.aspnet\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|solutionrelative:weatheraggregator.aspnet\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.library\\service\\weatherapiclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|solutionrelative:weatheraggregator.library\\service\\weatherapiclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{80FA9B51-EAA2-4BFD-9D63-166C60CF1764}|WeatherAggregator.Console\\WeatherAggregator.Console.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80FA9B51-EAA2-4BFD-9D63-166C60CF1764}|WeatherAggregator.Console\\WeatherAggregator.Console.csproj|solutionrelative:weatheraggregator.console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.aspnet\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|solutionrelative:weatheraggregator.aspnet\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.library\\background\\weatherpollingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|solutionrelative:weatheraggregator.library\\background\\weatherpollingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.library\\interfaces\\iweatherclientapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|solutionrelative:weatheraggregator.library\\interfaces\\iweatherclientapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.library\\service\\datacsvimporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|solutionrelative:weatheraggregator.library\\service\\datacsvimporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WeatherPollingService.cs",
-              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Background\\WeatherPollingService.cs",
-              "RelativeDocumentMoniker": "WeatherAggregator.Library\\Background\\WeatherPollingService.cs",
-              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Background\\WeatherPollingService.cs",
-              "RelativeToolTip": "WeatherAggregator.Library\\Background\\WeatherPollingService.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAADgvxUAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T13:34:49.175Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "IWeatherClientApiService.cs",
-              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Interfaces\\IWeatherClientApiService.cs",
-              "RelativeDocumentMoniker": "WeatherAggregator.Library\\Interfaces\\IWeatherClientApiService.cs",
-              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Interfaces\\IWeatherClientApiService.cs",
-              "RelativeToolTip": "WeatherAggregator.Library\\Interfaces\\IWeatherClientApiService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAdAAAAAAAAAA==",
+              "Title": "DataCSVImporter.cs",
+              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Service\\DataCSVImporter.cs",
+              "RelativeDocumentMoniker": "WeatherAggregator.Library\\Service\\DataCSVImporter.cs",
+              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Service\\DataCSVImporter.cs",
+              "RelativeToolTip": "WeatherAggregator.Library\\Service\\DataCSVImporter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T13:22:05.91Z",
+              "WhenOpened": "2025-05-08T14:23:47.866Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "WeatherApiClientService.cs",
-              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Service\\WeatherApiClientService.cs",
-              "RelativeDocumentMoniker": "WeatherAggregator.Library\\Service\\WeatherApiClientService.cs",
-              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Service\\WeatherApiClientService.cs*",
-              "RelativeToolTip": "WeatherAggregator.Library\\Service\\WeatherApiClientService.cs*",
-              "ViewState": "AgIAADoAAAAAAAAAAAAxwEoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T13:21:35.529Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "WeatherAggregator.ASPNet\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAADgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-08T14:23:03.91Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Console\\Program.cs",
-              "RelativeDocumentMoniker": "WeatherAggregator.Console\\Program.cs",
-              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Console\\Program.cs",
-              "RelativeToolTip": "WeatherAggregator.Console\\Program.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAADwAAAAEAAAAAAAAAA==",
+              "Title": "WeatherApiClientService.cs",
+              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Service\\WeatherApiClientService.cs",
+              "RelativeDocumentMoniker": "WeatherAggregator.Library\\Service\\WeatherApiClientService.cs",
+              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Service\\WeatherApiClientService.cs",
+              "RelativeToolTip": "WeatherAggregator.Library\\Service\\WeatherApiClientService.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAIwE4AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T13:21:00.681Z",
+              "WhenOpened": "2025-05-08T14:21:00.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "WeatherAggregator.ASPNet\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAywC0AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T14:20:15.231Z",
               "EditorCaption": ""
             }
           ]

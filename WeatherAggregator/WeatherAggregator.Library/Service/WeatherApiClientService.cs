@@ -14,7 +14,7 @@ namespace WeatherAggregator.Library.Service
 {
     public class WeatherApiClientService: IWeatherClientApiService
     {
-        private readonly HttpClient _httpClient;
+        private HttpClient _httpClient;
 
         public WeatherApiClientService(HttpClient httpClient)
         {
@@ -22,7 +22,9 @@ namespace WeatherAggregator.Library.Service
         }
          public async Task<List<WeatherInfo>> CallMeteoApi(ILocation location, DateTime start, DateTime end)
         {
+            _httpClient = new HttpClient();
             string url = $"https://api.open-meteo.com/v1/forecast?latitude={location.Latitude.ToString(CultureInfo.InvariantCulture)}&longitude={location.Longitude.ToString(CultureInfo.InvariantCulture)}&hourly=temperature_2m&start_date={start.ToString("yyyy-MM-dd")}&end_date={end.ToString("yyyy-MM-dd")}";
+            Console.WriteLine("Api Call: " + url);
             var list = new List<WeatherInfo>();
             try
             {
@@ -32,7 +34,6 @@ namespace WeatherAggregator.Library.Service
                 string content = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(content);
 
-                Console.WriteLine(json);
                 var hourly = json["hourly"];
                 if (hourly != null)
                 {
@@ -54,7 +55,7 @@ namespace WeatherAggregator.Library.Service
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Weather fetch failed: {ex.Message}");
+                Console.WriteLine($"Weather fetch failed on MeteoApi: {ex.Message}");
             }
 
             return list;
@@ -64,6 +65,7 @@ namespace WeatherAggregator.Library.Service
         {
             var days = end - start;
             string url = $"https://api.weatherapi.com/v1/forecast.json?q={location.Latitude},{location.Longitude}&days={days.Days}";
+            Console.WriteLine("Api Call: " + url);
             var list = new List<WeatherInfo>();
             try
             {
@@ -73,28 +75,31 @@ namespace WeatherAggregator.Library.Service
                 string content = await response.Content.ReadAsStringAsync();
                 var json = JObject.Parse(content);
 
-                var hours = json["forecast"]?["forecastday"]?[0]?["hour"];
-                if (hours != null)
+                foreach (var day in json["forecast"]["forecastday"])
                 {
-                    foreach (var hour in hours)
+                    var hours = day["hour"];
+                    if (hours != null)
                     {
-                        var time = hour["time"]?.ToString();
-                        var temp = hour["temp_c"]?.ToObject<double>();
-
-                        if (time != null && temp != null)
+                        foreach (var hour in hours)
                         {
-                            list.Add(new WeatherInfo
+                            var time = hour["time"]?.ToString();
+                            var temp = hour["temp_c"]?.ToObject<double>();
+
+                            if (time != null && temp != null)
                             {
-                                Time = DateTime.Parse(time),
-                                Temperature = temp.Value
-                            });
+                                list.Add(new WeatherInfo
+                                {
+                                    Time = DateTime.Parse(time),
+                                    Temperature = temp.Value
+                                });
+                            }
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Weather fetch failed: {ex.Message}");
+                Console.WriteLine($"Weather fetch failed on WeatherApi: {ex.Message}");
             }
 
             return list;
