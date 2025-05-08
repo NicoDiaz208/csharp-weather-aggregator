@@ -35,6 +35,12 @@ namespace WeatherAggregator.ASPNet.Controllers
             return View("Index", _homeViewModel);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddLocation(Location model)
+        {
+            await _weatherRepository.AddLocationAsync(model);
+            return RedirectToAction("Index");
+        }
 
         public async Task<IActionResult> Index()
         {
@@ -54,6 +60,7 @@ namespace WeatherAggregator.ASPNet.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

@@ -12,7 +12,7 @@ using WeatherAggregator.Library.Database;
 namespace WeatherAggregator.Library.Migrations
 {
     [DbContext(typeof(WeatherDbContext))]
-    [Migration("20250503141327_InitSchema")]
+    [Migration("20250508084816_InitSchema")]
     partial class InitSchema
     {
         /// <inheritdoc />
