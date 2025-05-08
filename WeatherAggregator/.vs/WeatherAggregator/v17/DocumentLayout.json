@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.aspnet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|solutionrelative:weatheraggregator.aspnet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.aspnet\\views\\locations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|solutionrelative:weatheraggregator.aspnet\\views\\locations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.aspnet\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|solutionrelative:weatheraggregator.aspnet\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.aspnet\\models\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|solutionrelative:weatheraggregator.aspnet\\models\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.library\\service\\weatherapiclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|solutionrelative:weatheraggregator.library\\service\\weatherapiclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,14 +47,6 @@
       "RelativeMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|solutionrelative:weatheraggregator.aspnet\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.aspnet\\views\\locations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|solutionrelative:weatheraggregator.aspnet\\views\\locations\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.aspnet\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79391149-EBF1-497C-A179-B47B02665239}|WeatherAggregator.ASPNet\\WeatherAggregator.ASPNet.csproj|solutionrelative:weatheraggregator.aspnet\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|c:\\users\\nicod\\documents\\github\\csharp-weather-aggregator\\weatheraggregator\\weatheraggregator.library\\entities\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5D8A465-5ED6-4D8A-993F-EC4A28FDF47E}|WeatherAggregator.Library\\WeatherAggregator.Library.csproj|solutionrelative:weatheraggregator.library\\entities\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -54,11 +62,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Program.cs",
+              "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Program.cs",
+              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Program.cs",
+              "RelativeToolTip": "WeatherAggregator.ASPNet\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T11:31:06.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Models\\HomeViewModel.cs",
+              "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Models\\HomeViewModel.cs",
+              "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Models\\HomeViewModel.cs",
+              "RelativeToolTip": "WeatherAggregator.ASPNet\\Models\\HomeViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T11:25:37.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "WeatherInfo.cs",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Entities\\WeatherInfo.cs",
               "RelativeDocumentMoniker": "WeatherAggregator.Library\\Entities\\WeatherInfo.cs",
@@ -71,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Location.cs",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Entities\\Location.cs",
               "RelativeDocumentMoniker": "WeatherAggregator.Library\\Entities\\Location.cs",
@@ -84,46 +118,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "LocationsController.cs",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Controllers\\LocationsController.cs",
               "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Controllers\\LocationsController.cs",
               "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Controllers\\LocationsController.cs",
               "RelativeToolTip": "WeatherAggregator.ASPNet\\Controllers\\LocationsController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAYwBsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAowB0AAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-08T09:06:29.842Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Views\\Locations\\Create.cshtml",
               "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Views\\Locations\\Create.cshtml",
               "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Views\\Locations\\Create.cshtml",
               "RelativeToolTip": "WeatherAggregator.ASPNet\\Views\\Locations\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-08T09:05:50.303Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "WeatherApiClientService.cs",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Service\\WeatherApiClientService.cs",
               "RelativeDocumentMoniker": "WeatherAggregator.Library\\Service\\WeatherApiClientService.cs",
               "ToolTip": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Library\\Service\\WeatherApiClientService.cs*",
               "RelativeToolTip": "WeatherAggregator.Library\\Service\\WeatherApiClientService.cs*",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAIwBkAAACEAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAIwBcAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-08T08:36:59.355Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Views\\Home\\Privacy.cshtml",
@@ -136,7 +170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.Console\\Program.cs",
               "RelativeDocumentMoniker": "WeatherAggregator.Console\\Program.cs",
@@ -149,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Controllers\\HomeController.cs",
@@ -162,7 +196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "WeatherModel.cs",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Models\\WeatherModel.cs",
               "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Models\\WeatherModel.cs",
@@ -175,7 +209,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "LocationModel.cs",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Models\\LocationModel.cs",
               "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Models\\LocationModel.cs",
@@ -188,7 +222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\NicoD\\Documents\\GitHub\\csharp-weather-aggregator\\WeatherAggregator\\WeatherAggregator.ASPNet\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "WeatherAggregator.ASPNet\\Views\\Home\\Index.cshtml",

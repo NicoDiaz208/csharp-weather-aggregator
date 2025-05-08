@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using WeatherAggregator.Library.Database;
 using WeatherAggregator.Library.Interfaces;
 using WeatherAggregator.Library.Service;
@@ -18,6 +19,10 @@ builder.Services.AddDbContext<WeatherDbContext>(options =>
 
 var app = builder.Build();
 
+// Force culture to en-US to handle dot decimals correctly
+var enUs = new CultureInfo("en-US");
+CultureInfo.DefaultThreadCurrentCulture = enUs;
+CultureInfo.DefaultThreadCurrentUICulture = enUs;
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
