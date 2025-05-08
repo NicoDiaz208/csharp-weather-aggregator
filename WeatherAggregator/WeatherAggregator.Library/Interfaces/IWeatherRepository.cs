@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherAggregator.Library.Entities;
+using WeatherAggregator.Library.Interfaces.Entities;
 
 namespace WeatherAggregator.Library.Interfaces
 {
@@ -15,6 +16,7 @@ namespace WeatherAggregator.Library.Interfaces
         Task<List<WeatherInfo>> GetWeatherInfoFromLocation(int locationId);
         Task<List<Location>> GetAllLocationsAsync();
         Task AddAllWeatherAsync(List<WeatherInfo> data);
+        Task DeleteLocation(ILocation location);
 
         Task<Location?> GetLocationFromId(int id);
 

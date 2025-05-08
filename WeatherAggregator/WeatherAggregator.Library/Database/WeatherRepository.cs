@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WeatherAggregator.Library.Entities;
 using WeatherAggregator.Library.Interfaces;
+using WeatherAggregator.Library.Interfaces.Entities;
 
 namespace WeatherAggregator.Library.Database
 {
@@ -63,6 +64,12 @@ namespace WeatherAggregator.Library.Database
                 await _context.AddAsync(x);
             }
 
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteLocation(ILocation location)
+        {
+            _context.Remove(location);
             await _context.SaveChangesAsync();
         }
     }
