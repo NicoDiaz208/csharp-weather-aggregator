@@ -47,8 +47,12 @@ namespace WeatherAggregator.ASPNet.Controllers
             }
             else { Console.WriteLine("Could not load Forecast"); }
 
+            var locations = await _weatherRepository.GetAllLocationsAsync();
+            _homeViewModel.Locations = locations
+                .Select(x => new LocationModel(x.Name, x.Latitude, x.Longitude, x.Id))
+                .ToList();
 
-                return View("Index", _homeViewModel);
+            return View("Index", _homeViewModel);
         }
 
         [HttpPost]
