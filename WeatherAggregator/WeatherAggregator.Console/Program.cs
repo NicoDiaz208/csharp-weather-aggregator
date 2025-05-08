@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using System.Globalization;
 
 var config = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: true) // optional for console apps
@@ -102,7 +103,7 @@ async Task AddLocation()
         Location location = locations.Where(x => x.Name == name).FirstOrDefault();
         if ( location == null)
         {
-            location = new Location(double.Parse(latitude), double.Parse(longitude), name);
+            location = new Location(double.Parse(latitude, CultureInfo.InvariantCulture), double.Parse(longitude, CultureInfo.InvariantCulture), name);
             await repo.AddLocationAsync(location);
             Console.WriteLine("successfully added location");
         }

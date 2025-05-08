@@ -64,7 +64,7 @@ namespace WeatherAggregator.Library.Service
          public async Task<List<WeatherInfo>> CallWeatherApi(ILocation location, DateTime start, DateTime end)
         {
             var days = end - start;
-            string url = $"https://api.weatherapi.com/v1/forecast.json?q={location.Latitude},{location.Longitude}&days={days.Days}";
+            string url = $"https://api.weatherapi.com/v1/forecast.json?q={location.Latitude},{location.Longitude}&days={days.Days + 1}";
             Console.WriteLine("Api Call: " + url);
             var list = new List<WeatherInfo>();
             try
