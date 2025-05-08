@@ -67,10 +67,17 @@ namespace WeatherAggregator.Library.Database
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteLocation(ILocation location)
+        public async Task<bool> DeleteLocation(int locationId)
         {
-            _context.Remove(location);
-            await _context.SaveChangesAsync();
+            var todelete = await _context.Locations.Where(x => x.Id == locationId).FirstOrDefaultAsync();
+            if (todelete != null)
+            {
+                _context.Remove(todelete);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+
+            return  false;
         }
     }
 }
