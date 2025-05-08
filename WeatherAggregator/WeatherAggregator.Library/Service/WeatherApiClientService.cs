@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using WeatherAggregator.Library.Entities;
 using WeatherAggregator.Library.Interfaces;
 using WeatherAggregator.Library.Interfaces.Entities;
+using static System.Net.WebRequestMethods;
 
 namespace WeatherAggregator.Library.Service
 {

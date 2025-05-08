@@ -2,42 +2,87 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <div style="display: flex;">
-        <!-- Sidebar -->
-        @foreach (var location in Model.Locations)
-        {
-            <form asp-action="GetWeatherInfo" method="post">
-                <input type="hidden" name="Id" value="@location.Id" />
-                <input type="hidden" name="Name" value="@location.Name" />
-                <input type="hidden" name="Latitude" value="@location.Latitude" />
-                <input type="hidden" name="Longitude" value="@location.Longitude" />
-                <button type="submit">@location.Name</button>
-            </form>
-        }
-        <a asp-controller="Locations" asp-action="Create" class="btn btn-primary">Add New Location</a>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <div style="display: flex;">
+            <!-- Sidebar -->
+            @foreach (var location in Model.Locations)
+            {
+                <form asp-action="GetWeatherInfo" method="post">
+                    <input type="hidden" name="Id" value="@location.Id" />
+                    <input type="hidden" name="Name" value="@location.Name" />
+                    <input type="hidden" name="Latitude" value="@location.Latitude" />
+                    <input type="hidden" name="Longitude" value="@location.Longitude" />
+                    <button type="submit">@location.Name</button>
+                </form>
+            }
+            <a asp-controller="Locations" asp-action="Create" class="btn btn-primary">Add New Location</a>
+        </div>
     </div>
 
-    <div style="margin-left: 20px;">
-        <h2>Weather in @Model.CurrentLocation.Name</h2>
+  
+    <div>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Temperature (°C)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var data in Model.WeatherModels.OrderByDescending(x => x.DateTime))
-                {
-                    <tr>
-                        <td>@data.DateTime.ToString("g")</td> <!-- "g" = short date + short time -->
-                        <td>@data.Temperature</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-</div>
+        @if (Model.WeatherModels != null && Model.WeatherModels.Any())
+        {
+            <div>
+                <canvas id="temperatureChart" width="100%" height="40"></canvas>
+            </div>
+
+            <script>
+                window.addEventListener('DOMContentLoaded', () => {
+                    const ctx = document.getElementById('temperatureChart');
+                    if (!ctx) return;
+
+                    const labels = [@Html.Raw(string.Join(", ", Model.WeatherModels
+                    .OrderBy(x => x.DateTime)
+                    .Select(x => $"'{x.DateTime:yyyy-MM-dd HH:mm}'")))];
+
+                    const temps = [@Html.Raw(string.Join(", ", Model.WeatherModels
+                    .OrderBy(x => x.DateTime)
+                    .Select(x => x.Temperature.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture))))];
+
+                    const data = {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Temperature (°C)',
+                            data: temps,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 2,
+                            tension: 0.1
+                        }]
+                    };
+
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: data,
+                        options: {
+                            responsive: true,
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Time'
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Temperature (°C)'
+                                    }
+                                }
+                            }
+                        }
+                    });
+                });
+            </script>
+
+        }
+
+
+    </div>
+</body>
