@@ -17,7 +17,7 @@ namespace WeatherAggregator.Library.Service
          public async Task<List<WeatherInfo>> CallMeteoApi(ILocation location, DateTime start, DateTime end)
         {
             _httpClient = new HttpClient();
-            string url = $"https://api.open-meteo.com/v1/forecast?latitude={location.Latitude.ToString(CultureInfo.InvariantCulture)}&longitude={location.Longitude.ToString(CultureInfo.InvariantCulture)}&hourly=temperature_2m&start_date={start.ToString("yyyy-MM-dd")}&end_date={end.ToString("yyyy-MM-dd")}";
+            string url = $"https://api.open-meteo.com/v1/forecast?latitude={location.Latitude.ToString(CultureInfo.InvariantCulture)}&longitude={location.Longitude.ToString(CultureInfo.InvariantCulture)}&hourly=temperature_2m&start_date={start.ToString("yyyy-MM-dd")}&end_date={end.ToString("yyyy-MM-dd")}&timezone=auto";
             Console.WriteLine("Api Call: " + url);
             var list = new List<WeatherInfo>();
             try
