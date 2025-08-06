@@ -22,11 +22,3 @@ A small csharp application which displays weather information using postgresql a
       ```bash dotnet user-secrets --project WeatherAggregator.Console set "ConnectionStrings:DefaultConnection" "Host=localhost;Database=weather_db;Username=your-username;Password=your-password" ```
       ```bash dotnet user-secrets --project WeatherAggregator.ASPNet set "ConnectionStrings:DefaultConnection" "Host=localhost;Database=weather_db;Username=your-username;Password=your-password" ```
      
-
-
-Todos for Project WeatherAggregator:
-  - [ ]  Import more features to entity weatherinfo like air_pressure, humidity etc.
-  - [ ]  Create Graph view of data with option to see Temperature, air_pressure etc over time.
-  - [ ]  Add button to activate background WeatherPollingService to automatically import data every time.
-  - [ ]  improve async and parallel shit
-  - [ ]  Add create page to add new locations
